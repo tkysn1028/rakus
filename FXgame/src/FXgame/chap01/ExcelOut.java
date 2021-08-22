@@ -15,7 +15,8 @@ public class ExcelOut {
 	public void ExcelOutExe(String str,String textarea) { 
 		try {
 			
-		XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream("C:/Users/user/Desktop/" + str + ".xlsx"));
+		XSSFWorkbook workbook = new XSSFWorkbook(new FileInputStream("C:/Users/user/Desktop/" + str + ".xlsx"));		
+		
 		/**C以下の文字列で保存ファイル先*/
 		
 		XSSFSheet sheet = workbook.getSheetAt(0);
@@ -30,8 +31,6 @@ public class ExcelOut {
 		System.out.print( "excelファイル" + str + "に書き込み完了しました。。。");
 		
 		}catch(FileNotFoundException e) {
-		System.out.println("ファイルが使用中のため書き込み不可");
-		}catch(IOException e) {
 		
 			XSSFWorkbook workbook = new XSSFWorkbook();
 			XSSFSheet sheet = workbook.createSheet("Sheet1");
@@ -43,12 +42,11 @@ public class ExcelOut {
 					workbook.write(new FileOutputStream("C:/Users/user/Desktop/" + str + ".xlsx"));
 					workbook.close();
 					System.out.print( "excelファイル" + str + "に書き込み完了しました。。。");
-					
-				}catch(FileNotFoundException exc) {
-				System.out.println("ファイルが使用中のため書き込み不可");
 				}catch(IOException exc) {
-					exc.printStackTrace();			
-				}
+					System.out.println("ファイルが開いているため書き込み不可");
+					}
+		}catch(IOException e) {
+			e.printStackTrace();
 		}
 		}
 }	
