@@ -3,12 +3,6 @@ package practiice;
 public class DeleteNum {
 
 	
-	
-	
-	
-	
-	
-	
 	public StringBuilder deletenum(StringBuilder sb) {	
 		
 		

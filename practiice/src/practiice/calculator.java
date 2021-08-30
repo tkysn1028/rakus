@@ -34,7 +34,7 @@ public class calculator extends JFrame implements ActionListener{
 			
 		
 		
-			setTitle("editor");
+			setTitle("my calculator");
 			setBounds(500, 100, 300, 450);
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -146,19 +146,18 @@ btdiv.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 				
 					if(ari.getFstoprnd() != null && ari.getScdoprnd() != null) {
-			
 						ari.calculate(ari.getFstoprnd(), ari.getScdoprnd(), ari.getOperator());
-					
+						
 						sb.delete(0, sb.toString().length());
 						sb.append(String.valueOf(ari.getResult()));
 						label1.setText(sb.toString());
 						ari.deleteOp();
-
+						
 					}
 					
 					label2.setText(btdiv.getText());
 					ari.setOperator(label2.getText());
-					ari.setFstoprnd(Double.parseDouble(sb.toString()));
+					ari.setFstoprnd(Double.parseDouble(label1.getText()));
 				
 					sb.delete(0, sb.toString().length());
 					sb.append(0);
@@ -182,13 +181,17 @@ btdiv.addActionListener(new ActionListener() {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 			
-					DeleteZero del = new DeleteZero();
-					del.MakeNum(sb);
+					if(sb.toString().equals("0")) {
+						
+						sb.replace(0, 1,"");
+					
+					
+					}	
 					sb.append(btseven.getText());
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}	
 				}
@@ -214,8 +217,7 @@ btdiv.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
-						
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 					}
 					
 					
@@ -242,10 +244,8 @@ btdiv.addActionListener(new ActionListener() {
 					del.MakeNum(sb);
 					sb.append(btnine.getText());
 					label1.setText(sb.toString());
-
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
-						
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 					}
 
 					
@@ -265,35 +265,25 @@ btmul.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
-					
 					if(ari.getFstoprnd() != null && ari.getScdoprnd() != null) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
-					
-						System.out.println(ari.getFstoprnd());
-						System.out.println(ari.getScdoprnd());
-						System.out.println(ari.getOperator());
-						
 						ari.calculate(ari.getFstoprnd(), ari.getScdoprnd(), ari.getOperator());
-					
+						
 						sb.delete(0, sb.toString().length());
 						sb.append(String.valueOf(ari.getResult()));
 						label1.setText(sb.toString());
 						ari.deleteOp();
-
+						
 					}
+				
 					
 					label2.setText(btmul.getText());
-					System.out.println(ari.getFstoprnd());
-					
 					ari.setOperator(label2.getText());
-					ari.setFstoprnd(Double.parseDouble(sb.toString()));
-					
-					
-					
+					ari.setFstoprnd(Double.parseDouble(label1.getText()));
+				
 					sb.delete(0, sb.toString().length());
 					sb.append(0);
-																
+				
+										
 				}
 			});
 			
@@ -316,12 +306,13 @@ btmul.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 					}
 
 					
 				}
-			});
+				
+	});
 		
 			
 			
@@ -343,7 +334,7 @@ btmul.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -370,7 +361,7 @@ btmul.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -388,25 +379,23 @@ btminus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
 					if(ari.getFstoprnd() != null && ari.getScdoprnd() != null) {
-						
 						ari.calculate(ari.getFstoprnd(), ari.getScdoprnd(), ari.getOperator());
-					
+						
 						sb.delete(0, sb.toString().length());
 						sb.append(String.valueOf(ari.getResult()));
 						label1.setText(sb.toString());
 						ari.deleteOp();
-
+						
 					}
 					
 					label2.setText(btminus.getText());
 					ari.setOperator(label2.getText());
-					ari.setFstoprnd(Double.parseDouble(sb.toString()));
-					
+					ari.setFstoprnd(Double.parseDouble(label1.getText()));
+				
 					sb.delete(0, sb.toString().length());
 					sb.append(0);
-												
+									
 				}
 			});
 			
@@ -429,7 +418,7 @@ btminus.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -455,7 +444,7 @@ btminus.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -480,7 +469,7 @@ btminus.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -499,25 +488,24 @@ btplus.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					
-					
 					if(ari.getFstoprnd() != null && ari.getScdoprnd() != null) {
-						
 						ari.calculate(ari.getFstoprnd(), ari.getScdoprnd(), ari.getOperator());
-					
+						
 						sb.delete(0, sb.toString().length());
 						sb.append(String.valueOf(ari.getResult()));
 						label1.setText(sb.toString());
 						ari.deleteOp();
-
+						
 					}
-					
+				
 					label2.setText(btplus.getText());
 					ari.setOperator(label2.getText());
-					ari.setFstoprnd(Double.parseDouble(sb.toString()));
-					
+					ari.setFstoprnd(Double.parseDouble(label1.getText()));
+				
 					sb.delete(0, sb.toString().length());
 					sb.append(0);
+				
+				
 												
 				}
 			});
@@ -543,7 +531,7 @@ btplus.addActionListener(new ActionListener() {
 					label1.setText(sb.toString());
 					
 					if(ari.getFstoprnd() != null && !(ari.getOperator().equals(""))   ) {
-						ari.setScdoprnd(Double.parseDouble(sb.toString()));
+						ari.setScdoprnd(Double.parseDouble(label1.getText()));
 						
 					}
 
@@ -552,24 +540,6 @@ btplus.addActionListener(new ActionListener() {
 			});
 		
 			
-			JButton btperiod= new JButton(" ");
-			gbc.gridx = 3;
-			gbc.gridy = 4;
-			layout.setConstraints(btperiod, gbc);
-			p.add(btperiod);
-			btperiod.setPreferredSize(new Dimension(60,60));
-	btperiod.addActionListener(new ActionListener() {
-				
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					
-					
-						
-					}
-
-					
-				}
-			);
 		
 
 			
@@ -579,24 +549,23 @@ btplus.addActionListener(new ActionListener() {
 			gbc.gridy = 4;
 			layout.setConstraints(btequal, gbc);
 			p.add(btequal);
-			btequal.setPreferredSize(new Dimension(60,60));
+			btequal.setPreferredSize(new Dimension(120,60));
 btequal.addActionListener(new ActionListener() {
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-							
 					if(ari.getFstoprnd() != null && ari.getScdoprnd() != null) {
-						
 						ari.calculate(ari.getFstoprnd(), ari.getScdoprnd(), ari.getOperator());
-					
+						
 						sb.delete(0, sb.toString().length());
 						sb.append(String.valueOf(ari.getResult()));
 						label1.setText(sb.toString());
 						ari.deleteOp();
-						sb.delete(0, sb.toString().length());
-						label2.setText(ari.getOperator());
-					}					
-												
+						
+					}
+													
+					sb.delete(0, sb.toString().length());
+					sb.append(0);							
 				}
 			});
 			
